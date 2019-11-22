@@ -1,0 +1,60 @@
+{
+  "name": "spider-demos",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "homepage": "https://github.com/xg4/spider-demos#readme",
+  "bugs": {
+    "url": "https://github.com/xg4/spider-demos/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xg4/spider-demos.git"
+  },
+  "license": "MIT",
+  "author": "xg4 <xingor4@gmail.com>",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --watch src --ext ts --exec npm run serve",
+    "lint": "eslint src/**/*",
+    "lint:fix": "eslint src/**/* --fix",
+    "pretty": "prettier --write src/**/*",
+    "serve": "ts-node --files --transpile-only ./src/index",
+    "start": "cross-env NODE_ENV=production pm2 start ts-node -- --files --transpile-only ./src/index"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{json,md,yml}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*.{ts,tsx,js,jsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "puppeteer": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.11",
+    "@types/puppeteer": "^2.0.0",
+    "@typescript-eslint/eslint-plugin": "^2.8.0",
+    "@typescript-eslint/parser": "^2.8.0",
+    "cross-env": "^6.0.3",
+    "eslint": "^6.6.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.4.3",
+    "nodemon": "^2.0.0",
+    "prettier": "^1.19.1",
+    "ts-node": "^8.5.2",
+    "typescript": "^3.7.2"
+  }
+}
